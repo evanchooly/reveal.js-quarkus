@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-        <title>Will my lib or framework work on Quarkus or GraalVM?</title>
+        <title>Writing Quarkus extensions</title>
 
         <link rel="stylesheet" href="css/reveal.css">
         <link rel="stylesheet" href="css/theme/quarkus.css">
@@ -39,9 +39,9 @@
                         <p>&nbsp;</p>
                         <p>&nbsp;</p>
                         <p>&nbsp;</p>
-                        <p style="font-size: 32px">Will my lib or framework work on</p>
+                        <p style="font-size: 32px">Writing</p>
                         <img src="css/theme/quarkus-assets/img/quarkus-logo-with-text.svg" style="width: 8em">
-                        <p style="font-size: 32px">(and GraalVM) ?</p>
+                        <p style="font-size: 32px">Extensions</p>
                         <p>&nbsp;</p>
                         <p>Peter Palaga</p>
                         <p class="light-font"><a href="https://twitter.com/ppalaga">@ppalaga</a></p>
@@ -63,7 +63,7 @@
                     <section id="agenda">
                         <h2>Agenda</h2>
                         <ul>
-                            <li>Quarkus intro</li>
+                            <!--<li>Quarkus intro</li>-->
                             <li>How Quarkus works
                                 <ul>
                                     <li>Build time augmentation</li>
@@ -95,7 +95,7 @@
                         <h2>Frameworks</h2>
                         <p>delegated to extensions</p>
                     </section>
-                    <section id="container-1st">
+                    <!--<section id="container-1st">
                         <h2>Why Quarkus?</h2>
                     </section>
                     <section id="container-1st">
@@ -190,7 +190,7 @@
                                 </ul>
                             </ol>
                         </ul>
-                    </section>
+                    </section>-->
                 </section>
 
                 <section id="how-quarkus-works">
@@ -667,7 +667,7 @@ public class CamelConfig {
         public boolean enabled;
         <span class="fragment">/* This option can be set in application.properties via
          *
-         *   camel.main.enabled = true
+         *   quarkus.camel.main.enabled = true
          *
          */</span>
     }
@@ -701,7 +701,7 @@ public class MyRecorder {
     <span class="fragment">/* Same effect using
      * org.eclipse.microprofile.config.ConfigProvider */
     if (ConfigProvider.getConfig()
-        .getValue("camel.main.enabled", Boolean.class)) {
+        .getValue("quarkus.camel.main.enabled", Boolean.class)) {
       /* Do something */
     }</span>
 }}</code></pre>
@@ -773,7 +773,28 @@ final public class AbandonedConnectionCleanupThread_disable {
                         <ul>
                             <li>Bytecode generation with <a href="https://github.com/quarkusio/gizmo">Gizmo</a></li>
                             <li><a href="https://quarkus.io/guides/dev-ui">DEV UI</a></li>
-                            <li><a href="https://quarkus.io/guides/writing-extensions#testing-extensions">Testing</a></li>
+                            <li><a href="https://quarkus.io/guides/writing-extensions#testing-extensions">Testing extensions</a></li>
+                        </ul>
+                    </section>
+                    <section id="ecosystem-3">
+                        <h2>Where to look for examples</h2>
+                        <ul class="numbered" style="font-size: 28px;">
+                            <ol>Quarkus "Core" repo: <a href="https://github.com/quarkusio/quarkus">quarkusio/quarkus</a> (~140 extensions)</ol>
+                            <ol style="margin-top: 20px;">Independent orgs/projects:
+                                <ul style="font-size: 20px;">
+                                    <li><a href="https://github.com/apache/camel-quarkus" target="_blank">apache/camel-quarkus</a> (300+ extensions)</li>
+                                    <li><a href="https://github.com/datastax/cassandra-quarkus" target="_blank">datastax/cassandra-quarkus</a></li>
+                                    <li><a href="https://github.com/hazelcast/quarkus-hazelcast-client" target="_blank">hazelcast/quarkus-hazelcast-client</a></li>
+                                    <li><a href="https://github.com/debezium/debezium/tree/master/debezium-quarkus-outbox" target="_blank">debezium/debezium-quarkus-outbox</a></li>
+                                    <li><a href="https://github.com/kiegroup/kogito-runtimes/tree/master/kogito-quarkus-extension" target="_blank">kiegroup/kogito</a>, <a href="https://github.com/kiegroup/optaplanner/tree/master/optaplanner-quarkus-integration" target="_blank">kiegroup/optaplanner</a></li>
+                                    <li><a href="https://github.com/amqphub/quarkus-qpid-jms" target="_blank">amqphub/quarkus-qpid-jms</a></li>
+                                </ul>
+                            </ol>
+                            <ol style="margin-top: 20px;"><a href="https://github.com/quarkiverse" target="_blank">Quarkiverse</a>: incubator/hosting for community extensions:
+                                <ul style="font-size: 20px;">
+                                    <li>micrometer-registry, logging-json, cxf, minio, mybatis, apicurio-registry-client, github-api, freemarker, tekton-client, google-cloud-services, ...</li>
+                                </ul>
+                            </ol>
                         </ul>
                     </section>
                     <section id="wrap-up">
