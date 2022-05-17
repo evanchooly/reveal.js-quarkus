@@ -30,7 +30,7 @@
                 <a href="https://quarkus.io/" target="_blank"><img src="css/theme/quarkus-assets/img/quarkus-logo-with-text.svg" class="left"></a> <a href="https://twitter.com/ppalaga">@ppalaga</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="css/theme/quarkus-assets/img/red-hat-white.svg" class="right">
             </div>
             <div class="slides">
-                <section>
+                <section id="intro">
                     <!--<section>
                         <p>The original reveal.js version of these slides looks a bit better than this PDF export:</p>
                         <p><a href="https://peter.palaga.org/presentations/210317-quarkus-for-extension-authors/index.html#/">https://peter.palaga.org/presentations/210317-quarkus-for-extension-authors/index.html#/</a></p>
@@ -47,12 +47,13 @@
                         <p class="light-font"><a href="https://twitter.com/ppalaga">@ppalaga</a></p>
                     </section>
                     <section id="about-me">
-                        <img src="images/red-hat-integration-logo-reverse.svg" style="height: 2em;">
-                        <img src="images/camel.svg" style="height: 2em; margin-left: 2em; ">
+                        <img src="images/red-hat-integration-logo-reverse.svg" style="height: 2em; vertical-align: middle;">
+                        <!-- RH Application Foundations -->
+                        <img src="images/camel.svg" style="height: 2em; margin-left: 2em; vertical-align: middle;">
+                        <img src="css/theme/quarkus-assets/img/quarkus-logo-with-text.svg" style="height: 1.2em; margin-left: 2em; vertical-align: middle;">
                         <p>&nbsp;</p>
                         <h2>My main job:</h2>
                         <p><a href="https://github.com/apache/camel-quarkus" target="_blank">Camel Quarkus</a></p>
-                        <p>porting Camel componets to Quarkus</p>
                     </section>
                     <section id="mvnd">
                         <p><code>mvnd</code> - the Maven Daemon</p>
@@ -99,7 +100,6 @@
                         <h2>Why Quarkus?</h2>
                     </section>
                     <section id="container-1st">
-                        <small>Why Quarkus?</small>
                         <h2>Container First</h2>
                         <table id="container-first" class="plaintable">
                             <tr>
@@ -118,39 +118,57 @@
                                 <td><a>🔬</a></td>
                                 <td>Low&nbsp;memory&nbsp;footprint</td>
                                 <td><a>✓</a></td>
-                                <td>More containers with the same amount of RAM</td>
+                                <td>More containers with the same RAM</td>
                             </tr>
                         </table>
                     </section>
+                    <section id="dev-mode">
+                        <h2>Dev mode</h2>
+                        <p><code>mvn compile quarkus:dev</code></p>
+                        <ul class="check" style="font-size: 30px;">
+                            <li>Live reload</li>
+                            <li>Dev services (via Testcontainers)
+                                <ul>
+                                    <li>DBs, Kafka, Mock Mailer, ...</li>
+                                </ul>
+                            </li>
+                            <li>Continuous testing</li>
+                            <li>DevUI
+                                <ul>
+                                    <li>Swagger UI, GraphQL UI, Health UI</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <p style="font-size: 24px;"><br><a ref="https://quarkus.io/guides/dev-mode-differences#dev-mode-features">https://quarkus.io/guides/dev-mode-differences#dev-mode-features</a></p>
+                    </section>
                     <section id="devjoy">
-                        <small>Why Quarkus?</small>
-                        <h2>Developer joy</h2>
+                        <h2>Developer 😍</h2>
                         <ul class="check">
-                            <li class="fragment">Live reload:<br>
-                                <code>mvn compile quarkus:dev</code></li>
-                            <li class="fragment">Isolation from GraalVM CLI/SPI</li>
-                            <li class="fragment">Panche: Simplified <a href="https://quarkus.io/guides/hibernate-orm-panache">ORM</a> and <a href="https://quarkus.io/guides/rest-data-panache">JAX-RS</a></li>
+                            <li>Isolation from GraalVM CLI/SPI</li>
+                            <li>Panche: simplified <a href="https://quarkus.io/guides/hibernate-orm-panache">ORM</a> and <a href="https://quarkus.io/guides/rest-data-panache">JAX-RS</a></li>
+                            <li><a href="https://quarkus.io/guides/qute">Qute</a> templating engine</li>
+                            <li><a href="https://quarkiverse.github.io/quarkiverse-docs/quarkus-renarde/dev/index.html">Renarde</a> server-side Web Framework</li>
                         </ul>
                     </section>
                     <section id="ecosystem-2">
-                        <small>Why Quarkus?</small>
                         <h2>Extensions</h2>
                         <table class="plaintable" style="font-size: 34px; margin-top: 80px">
                             <tbody><tr>
                                 <td style="">Standards</td>
-                                <td style="padding-left: 1em">Databases</td>
+                                <td style="padding-left: 1em">Data</td>
                                 <td style="padding-left: 1em">3rd party libs/frameworks</td>
                             </tr>
                             <tr>
                                 <td>
                                     <ul class="check" style="font-size: 0.7em">
-                                        <li>Java EE <small>(JPA, CDI, JTA, ...)</small></li>
-                                        <li>MicroProfile <small>(Health, Metrics, ...)</small></li>
+                                        <li>Jakarta EE <small>(JPA, CDI, JTA, ...)</small></li>
+                                        <li>MicroProfile <small>(Config, Health, Metrics, ...)</small></li>
                                         <li>Spring <small>(via compatibility layers)</small></li>
                                     </ul>
                                 </td>
                                 <td style="padding-left: 1em">
                                     <ul class="check" style="font-size: 0.7em">
+                                        <li>Kafka</li>
                                         <li>PostgreSQL, MySQL</li>
                                         <li>MSSQL, H2</li>
                                         <li>FlyWay, Amazon DynamoDB</li>
@@ -170,10 +188,9 @@
                         <p><small>Check a more complete list on <a href="https://code.quarkus.io/">code.quarkus.io</a></small></p>
                     </section>
                     <section id="ecosystem-3">
-                        <small>Why Quarkus?</small>
                         <h2>Ecosystem of organizations</h2>
                         <ul class="numbered" style="font-size: 28px;">
-                            <ol class="fragment">Quarkus "Core" repo: <a href="https://github.com/quarkusio/quarkus">quarkusio/quarkus</a> (~140 extensions)</ol>
+                            <ol class="fragment">Quarkus "Core" repo: <a href="https://github.com/quarkusio/quarkus">quarkusio/quarkus</a> (~200 extensions)</ol>
                             <ol class="fragment" style="margin-top: 20px;">Independent orgs/projects:
                                 <ul style="font-size: 20px;">
                                     <li><a href="https://github.com/apache/camel-quarkus" target="_blank">apache/camel-quarkus</a> (300+ extensions)</li>
@@ -654,7 +671,6 @@ public class MpMetricsRecorder {
                         </ul>
                     </section>
                     <section id="config-example">
-                        <h2>Config POJO</h2>
                         <pre style="width: 110%; margin: 0px;"><code class="hljs java" style="max-height: none" data-noescape data-trim>@ConfigRoot(name = "camel", phase = ConfigPhase.BUILD_AND_RUN_TIME_FIXED)
 public class CamelConfig {
 
